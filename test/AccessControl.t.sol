@@ -4,10 +4,10 @@ pragma solidity ^0.8.13;
 import {Test} from "forge-std/Test.sol";
 import {AccessControl} from "../src/AccessControl.sol";
 
-contract AccessControlTest is Test{
+contract AccessControlTest is Test {
     event RoleAssigned(address indexed account, string role);
     AccessControl accessControl;
-    
+
     address owner = vm.addr(0x1);
     address admin = vm.addr(0x2);
     address supporter = vm.addr(0x3);
@@ -41,7 +41,7 @@ contract AccessControlTest is Test{
 
     function test_AssignSupRole() public {
         assertFalse(accessControl.supporters(supporter));
-        vm.expectEmit(true,false, false, true);
+        vm.expectEmit(true, false, false, true);
 
         emit RoleAssigned(supporter, "Supporter");
         vm.prank(owner);
@@ -52,7 +52,7 @@ contract AccessControlTest is Test{
 
     function test_AssignMemRole() public {
         assertFalse(accessControl.members(member));
-        vm.expectEmit(true,false, false, true);
+        vm.expectEmit(true, false, false, true);
 
         emit RoleAssigned(member, "Member");
         vm.prank(owner);
@@ -71,6 +71,5 @@ contract AccessControlTest is Test{
         vm.prank(supporter);
         vm.expectRevert(bytes("You are not an admin and cannot call this function!"));
         accessControl.assignOtherRole(member, "Member");
-
     }
 }

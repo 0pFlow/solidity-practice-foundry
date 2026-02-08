@@ -12,21 +12,18 @@ contract CustomErrorsTest is Test {
     function setUp() public {
         vm.prank(owner);
         customErrors = new CustomErrors();
-
-
     }
 
     //*-------------------Deployment-------------- */
     function test_DeploymentCustomErrors() public view {
         assertEq(customErrors.owner(), owner);
-
     }
 
     //*-------------------Set Number-------------- */
 
     function test_AllowValidNumber() public {
         uint256 validNumber = 16;
-        
+
         vm.prank(owner);
         customErrors.setNumber(validNumber);
         assertEq(customErrors.number(), validNumber);
@@ -48,7 +45,7 @@ contract CustomErrorsTest is Test {
 
     function test_NumberUnchanged() public {
         uint256 validNumber = 16;
-        uint256 invalidNumber =5;
+        uint256 invalidNumber = 5;
 
         vm.prank(owner);
         customErrors.setNumber(validNumber);
@@ -60,5 +57,4 @@ contract CustomErrorsTest is Test {
 
         assertEq(customErrors.number(), validNumber);
     }
-
 }

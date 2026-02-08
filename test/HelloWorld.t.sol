@@ -13,9 +13,9 @@ contract HelloWorldTest is Test {
         helloWorld = new HelloWorld(INITIAL);
     }
     /*---------------DEPLOYMENT----------*/
-    
+
     function test_Deployment_SetsInitialMessage() public view {
-        assertEq(helloWorld.message(),INITIAL);
+        assertEq(helloWorld.message(), INITIAL);
     }
 
     /*---------------MESSAGE UPDATE----------*/
@@ -40,8 +40,6 @@ contract HelloWorldTest is Test {
 
         helloWorld.setMessage(secondMessage);
         assertEq(helloWorld.message(), secondMessage);
-
-
     }
 
     /*---------------Retrieve Message----------*/
@@ -52,7 +50,5 @@ contract HelloWorldTest is Test {
         helloWorld.setMessage(newMessage);
 
         assertEq(helloWorld.getMessage(), newMessage);
-
     }
-
 }

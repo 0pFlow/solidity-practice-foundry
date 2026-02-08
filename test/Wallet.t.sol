@@ -5,8 +5,8 @@ import {Test} from "forge-std/Test.sol";
 import {Wallet} from "../src/Wallet.sol";
 
 contract WalletTest is Test {
-    event DepositMade(address indexed accountAddress, uint amount);
-    event WithdrawalMade(address indexed accountAddress, uint amount);
+    event DepositMade(address indexed accountAddress, uint256 amount);
+    event WithdrawalMade(address indexed accountAddress, uint256 amount);
     event FallbackCalled(address indexed accountAddress);
 
     Wallet wallet;
@@ -15,7 +15,6 @@ contract WalletTest is Test {
     function setUp() public {
         wallet = new Wallet();
         vm.deal(user, 100 ether);
-
     }
 
     /*-------------------DEPOSIT TEST-------------- */
@@ -26,21 +25,18 @@ contract WalletTest is Test {
         vm.prank(user);
         wallet.deposit{value: depositAmount}();
         assertEq(wallet.contractBalance(), depositAmount);
-
-
     }
 
     function test_RecieveFunction() public {
         uint256 depositAmount = 1 ether;
         vm.expectEmit(true, false, false, true);
         emit DepositMade(user, depositAmount);
-        
-        vm.prank(user); 
-        (bool success, ) = address(wallet).call{value: depositAmount}("");
-        assertTrue(success,"Recieve function Failed!");
+
+        vm.prank(user);
+        (bool success,) = address(wallet).call{value: depositAmount}("");
+        assertTrue(success, "Recieve function Failed!");
 
         assertEq(wallet.contractBalance(), depositAmount);
-
     }
 
     /*-------------------WITHDRAWAL TEST-------------- */
@@ -78,9 +74,6 @@ contract WalletTest is Test {
     function test_FallbackFunction() public {
         vm.prank(user);
         vm.expectRevert(bytes("Fallback function called. This function does not exist. Try another one."));
-        (bool success, ) = address(wallet).call(hex"1234");
-
-    }   
-
-
-} 
+        (bool success,) = address(wallet).call(hex"1234");
+    }
+}
