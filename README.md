@@ -1,5 +1,12 @@
 # Solidity Practice (Foundry)
 
+![Solidity](https://img.shields.io/badge/-Solidity-363636?logo=solidity&logoColor=white)
+![Ethereum](https://img.shields.io/badge/-Ethereum-3C3C3D?logo=ethereum&logoColor=white)
+![Foundry](https://img.shields.io/badge/-Foundry-FFDB1C?logo=foundry&logoColor=black)
+[![Stars](https://img.shields.io/github/stars/0pFlow/solidity-practice-foundry?style=flat)](https://github.com/0pFlow/solidity-practice-foundry/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/0pFlow/solidity-practice-foundry)](https://github.com/0pFlow/solidity-practice-foundry/commits/main)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 A collection of small Solidity smart contracts written while learning Ethereum development with the [Foundry](https://book.getfoundry.sh/) toolkit. Every contract is paired with a Forge test file in `test/` to demonstrate behavior, events, reverts, and access control.
 
 ## Contracts
